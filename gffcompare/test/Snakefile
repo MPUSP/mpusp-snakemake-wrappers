@@ -12,6 +12,7 @@ rule test_gffcompare:
     log:
         "logs/gffcompare.log",
     params:
-        extra="-C -A",
+        # To combine features from all GFF input files without redundancy, use `-C`
+        extra="-C",
     wrapper:
         "master/bio/gffcompare"
