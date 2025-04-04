@@ -1,0 +1,17 @@
+rule test_gffcompare:
+    input:
+        gff=["file1.gff", "file2.gff", "file3.gff"],
+        # optional input files
+        # reference="", # reference transcriptome in GFF/GTF format
+        # fasta="", # reference genome sequence in FASTA format
+    output:
+        # it is recommended to use the `multiext` statement, as all output files are
+        # created using a common prefix
+        multiext("gffcmp", ".combined.gtf", ".loci", ".stats", ".tracking"),
+    threads: 1
+    log:
+        "logs/gffcompare.log",
+    params:
+        extra="-C -A",
+    wrapper:
+        "master/bio/gffcompare"

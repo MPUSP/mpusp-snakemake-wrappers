@@ -1,0 +1,20 @@
+name: gffcompare
+url: https://ccb.jhu.edu/software/stringtie/gffcompare.shtml
+description: >
+  Compare, merge, annotate and estimate accuracy of one or more GFF files when compared with a reference.
+author:
+  - Michael Jahn
+input:
+  - gff: GFF or GTF files to compare.
+  - reference: GFF or GTF file acting as reference to compare, e.g. genome annotation (optional).
+  - fasta: Genome sequence as a (multi-entry) fasta file (optional); see documentation for more information on how this option alters output.
+output:
+  - .combined.gtf: A consensus GTF file made from combining the single GFF input files. When using the `-C` option, only a single representative feature for multiple similiar ones is kept, and redundant features are saved in a seaprate poutput file.
+  - .loci: Similar to the stats output file, this file summarizes the consensus features in a more compact format one feature per line.
+  - .stats: Data summary and accuracy estimation.
+  - .tracking: Tracking information for each feature in each sample.
+params:
+  - extra: additional program arguments.
+notes: |
+  * All output files share the same prefix, determined from the `multiext` input statement.
+  It is recommended to use the same format as in the example.
