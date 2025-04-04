@@ -15,4 +15,5 @@ rule test_gffcompare:
         # To combine features from all GFF input files without redundancy, use `-C`
         extra="-C",
     wrapper:
-        "master/bio/gffcompare"
+        # replace with "master/bio/gffcompare" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/gffcompare"
