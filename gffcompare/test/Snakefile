@@ -1,6 +1,10 @@
 rule test_gffcompare:
     input:
-        gff=["file1.gff", "file2.gff", "file3.gff"],
+        gff=[
+            "gffcompare/test/file1.gff",
+            "gffcompare/test/file2.gff",
+            "gffcompare/test/file3.gff",
+        ],
         # optional input files
         # reference="", # reference transcriptome in GFF/GTF format
         # fasta="", # reference genome sequence in FASTA format

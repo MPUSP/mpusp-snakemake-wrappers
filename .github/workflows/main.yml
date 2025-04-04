@@ -33,13 +33,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Inspect wrapper content
-        run: ls -la ./${{ matrix.workflow }}/test
       - name: Lint workflow
         uses: snakemake/snakemake-github-action@v1.25.1
         with:
-          directory: ./${{ matrix.workflow }}/test
-          snakefile: Snakefile
+          directory: .
+          snakefile: ${{ matrix.workflow }}/test/Snakefile
           args: "--lint"
 
   Testing:
@@ -58,6 +56,6 @@ jobs:
       - name: Test workflow
         uses: snakemake/snakemake-github-action@v1.25.1
         with:
-          directory: ./${{ matrix.workflow }}/test
-          snakefile: Snakefile
+          directory: .
+          snakefile: ${{ matrix.workflow }}/test/Snakefile
           args: "--sdm conda --show-failed-logs --cores 2 --conda-cleanup-pkgs cache"
