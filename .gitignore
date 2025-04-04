@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Snakemake temp files
+.snakemake/
+
 # Distribution / packaging
 .Python
 build/

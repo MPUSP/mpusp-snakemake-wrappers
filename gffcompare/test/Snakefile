@@ -1,6 +1,10 @@
 rule test_gffcompare:
     input:
-        gff=["file1.gff", "file2.gff", "file3.gff"],
+        gff=[
+            "gffcompare/test/file1.gff",
+            "gffcompare/test/file2.gff",
+            "gffcompare/test/file3.gff",
+        ],
         # optional input files
         # reference="", # reference transcriptome in GFF/GTF format
         # fasta="", # reference genome sequence in FASTA format
@@ -15,4 +19,5 @@ rule test_gffcompare:
         # To combine features from all GFF input files without redundancy, use `-C`
         extra="-C",
     wrapper:
-        "master/bio/gffcompare"
+        # replace with "master/bio/gffcompare" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/gffcompare"
