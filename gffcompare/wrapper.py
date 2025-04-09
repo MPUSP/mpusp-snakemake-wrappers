@@ -39,4 +39,5 @@ shell(
     " {fasta}"  # optional fasta input
     " -o {output_prefix}"  # output prefix
     " {gff}"
+    " {log}"
 )
