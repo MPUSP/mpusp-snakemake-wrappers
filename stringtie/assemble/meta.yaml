@@ -1,0 +1,23 @@
+name: stringtie
+url: https://ccb.jhu.edu/software/stringtie/
+description: >
+  StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.
+  It uses a novel network flow algorithm as well as an optional de novo assembly step to assemble and
+  quantitate full-length transcripts representing multiple splice variants for each gene locus.
+author:
+  - Michael Jahn
+input:
+  - reference: GFF or GTF file acting as reference transcriptome (optional).
+  - short_reads: Mapped reads in BAM format derived for example from Illumina sequencing. Required when no long read input is supplied.
+  - long_reads: Mapped reads in BAM format derived for example from Oxford Nanopore or PacBio sequencing. Required when no short read input is supplied.
+  - point_features: >
+      List of point-features from a tab-separated text file to guide the transcriptome assembly (optional).
+      Accepted point features are transcription start sites (TSS) and polyadenylation sites (CPAS).
+      There are four tab-delimited columns in the feature file. The first three define the location of the point feature on the cromosome (sequence name, coordinate and strand),
+      and the last is the type of the feature (TSS or CPAS).
+output:
+  - gff: The assembled transcriptome in GFF/GTF format.
+params:
+  - extra: additional program arguments.
+notes: |
+  * The StringTie running mode is determined from the input. For example if both short and long reads are supplied, it uses the `--mix` mode.

@@ -1,0 +1,21 @@
+rule test_stringtie_assemble:
+    input:
+        short_reads=[
+            "stringtie/assemble/test/ILL_R1.bam",
+            "stringtie/assemble/test/ILL_R2.bam",
+        ],
+        # optional input files
+        # long_reads="", # BAM files from e.g. Nanopore sequencing
+        # point_features="", # tab-separated table with TSS/CPAS sites
+        # reference="", # reference transcriptome in GFF/GTF format
+    output:
+        gff="assembly.gff",
+    threads: 1
+    log:
+        "logs/stringtie_assemble.log",
+    params:
+        # additional parameters
+        extra="",
+    wrapper:
+        # replace with "master/bio/stringtie/assemble" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/stringtie/assemble"
