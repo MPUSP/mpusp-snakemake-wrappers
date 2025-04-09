@@ -1,4 +1,5 @@
 [![Snakemake](https://img.shields.io/badge/snakemake-≥8.0.0-brightgreen.svg)](https://snakemake.readthedocs.io)
+[![Tests](https://github.com/MPUSP/mpusp-snakemake-wrappers/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/MPUSP/mpusp-snakemake-wrappers/actions/workflows/main.yml)
 
 # MPUSP Snakemake wrappers
 
@@ -36,7 +37,26 @@ rule test_gffcompare:
 
 ## Adding wrappers to this repository
 
-Wrappers that are to be added to this repository shoul alreadz follow the standards of the official Snakemake wrapper repository. This way it will be easy to transfer them to the official wrapper collection if desired.
+Wrappers that are to be added to this repository shoul already [follow the standards](https://snakemake-wrappers.readthedocs.io/en/stable/contributing.html) of the official Snakemake wrapper repository. This way it will be easy to transfer them to the official wrapper collection if desired.
+
+To add a wrapper, create a new directory named according to your tool, and add:
+
+- `<your_tool>/environment.yaml` -- the conda env definition
+- `<your_tool>/gffcompare/environment.linux-64.pin.txt` -- the pinned env, for exact reproduction
+- `<your_tool>/meta.yaml` -- desciption of the tool, its, purpose, authors, parameters, etc
+- `<your_tool>/test` -- A real-world test case, see the official snakemake wrappers documentation
+
+Tests are automatically run on wrappers when the name of the new tool is added to the github actions workflow.
+In the `linting` and `testing` subsections of `.github/workflows/main.yml`, add your tool to the list:
+
+```yml
+  Linting:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    strategy:
+      matrix:
+        workflow: [gffcompare, <your_tool>]  <-- ADD YOUR TOOL HERE
+```
 
 ## License
 
