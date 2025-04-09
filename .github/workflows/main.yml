@@ -28,7 +28,7 @@ jobs:
     if: ${{ github.actor != 'github-actions[bot]' }}
     strategy:
       matrix:
-        workflow: ['gffcompare', 'stringtie/assemble']
+        workflow: ["gffcompare", "stringtie/assemble"]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +45,7 @@ jobs:
     if: ${{ github.actor != 'github-actions[bot]' }}
     strategy:
       matrix:
-        workflow: ['gffcompare', 'stringtie/assemble']
+        workflow: ["gffcompare", "stringtie/assemble"]
     needs:
       - Linting
       - Formatting
