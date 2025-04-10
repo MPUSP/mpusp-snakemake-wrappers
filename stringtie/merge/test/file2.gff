@@ -1,0 +1,9 @@
+# StringTie version 3.0.0
+NZ_CP160045.1	StringTie	transcript	1	29528	1000	+	.	gene_id "STRG.33"; transcript_id "STRG.33.1"; cov "4226.472168"; FPKM "1593.694824"; TPM "1256.591553";
+NZ_CP160045.1	StringTie	exon	1	29528	1000	+	.	gene_id "STRG.33"; transcript_id "STRG.33.1"; exon_number "1"; cov "4226.472168";
+NZ_CP160045.1	StringTie	transcript	30899	32173	1000	+	.	gene_id "STRG.34"; transcript_id "STRG.34.1"; cov "3355.530518"; FPKM "1265.284912"; TPM "997.647949";
+NZ_CP160045.1	StringTie	exon	30899	32173	1000	+	.	gene_id "STRG.34"; transcript_id "STRG.34.1"; exon_number "1"; cov "3355.530518";
+NZ_CP160045.1	StringTie	transcript	32357	33386	1000	+	.	gene_id "STRG.35"; transcript_id "STRG.35.1"; cov "3735.414795"; FPKM "1408.529663"; TPM "1110.593018";
+NZ_CP160045.1	StringTie	exon	32357	33386	1000	+	.	gene_id "STRG.35"; transcript_id "STRG.35.1"; exon_number "1"; cov "3735.414795";
+NZ_CP160045.1	StringTie	transcript	33425	35668	1000	+	.	gene_id "STRG.36"; transcript_id "STRG.36.1"; cov "40.087296"; FPKM "15.115896"; TPM "11.918535";
+NZ_CP160045.1	StringTie	exon	33425	35668	1000	+	.	gene_id "STRG.36"; transcript_id "STRG.36.1"; exon_number "1"; cov "40.087296";

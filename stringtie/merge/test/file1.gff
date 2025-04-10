@@ -1,0 +1,11 @@
+# StringTie version 3.0.0
+NZ_CP160045.1	StringTie	transcript	1	2682	1000	+	.	gene_id "STRG.1"; transcript_id "STRG.1.1"; cov "224.994064"; FPKM "94.289757"; TPM "110.816360";
+NZ_CP160045.1	StringTie	exon	1	2682	1000	+	.	gene_id "STRG.1"; transcript_id "STRG.1.1"; exon_number "1"; cov "224.994064";
+NZ_CP160045.1	StringTie	transcript	3220	14597	1000	+	.	gene_id "STRG.2"; transcript_id "STRG.2.1"; cov "147.064240"; FPKM "61.631191"; TPM "72.433571";
+NZ_CP160045.1	StringTie	exon	3220	14597	1000	+	.	gene_id "STRG.2"; transcript_id "STRG.2.1"; exon_number "1"; cov "147.064240";
+NZ_CP160045.1	StringTie	transcript	14846	29533	1000	+	.	gene_id "STRG.3"; transcript_id "STRG.3.1"; cov "7277.666016"; FPKM "3049.899902"; TPM "3584.469727";
+NZ_CP160045.1	StringTie	exon	14846	29533	1000	+	.	gene_id "STRG.3"; transcript_id "STRG.3.1"; exon_number "1"; cov "7277.666016";
+NZ_CP160045.1	StringTie	transcript	30899	32171	1000	+	.	gene_id "STRG.4"; transcript_id "STRG.4.1"; cov "2839.124756"; FPKM "1189.810791"; TPM "1398.354492";
+NZ_CP160045.1	StringTie	exon	30899	32171	1000	+	.	gene_id "STRG.4"; transcript_id "STRG.4.1"; exon_number "1"; cov "2839.124756";
+NZ_CP160045.1	StringTie	transcript	32356	35677	1000	+	.	gene_id "STRG.5"; transcript_id "STRG.5.1"; cov "1328.067139"; FPKM "556.561890"; TPM "654.113159";
+NZ_CP160045.1	StringTie	exon	32356	35677	1000	+	.	gene_id "STRG.5"; transcript_id "STRG.5.1"; exon_number "1"; cov "1328.067139";

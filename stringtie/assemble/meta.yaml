@@ -1,4 +1,4 @@
-name: stringtie
+name: stringtie assemble
 url: https://ccb.jhu.edu/software/stringtie/
 description: >
   StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.
@@ -13,8 +13,8 @@ input:
   - point_features: >
       List of point-features from a tab-separated text file to guide the transcriptome assembly (optional).
       Accepted point features are transcription start sites (TSS) and polyadenylation sites (CPAS).
-      There are four tab-delimited columns in the feature file. The first three define the location of the point feature on the cromosome (sequence name, coordinate and strand),
-      and the last is the type of the feature (TSS or CPAS).
+      There are four tab-delimited columns in the feature file. The first three define the location of the point feature 
+      on the cromosome (sequence name, coordinate and strand), and the last is the type of the feature (TSS or CPAS).
 output:
   - gff: The assembled transcriptome in GFF/GTF format.
 params:

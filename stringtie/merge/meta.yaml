@@ -1,0 +1,18 @@
+name: stringtie merge
+url: https://ccb.jhu.edu/software/stringtie/
+description: >
+  StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.
+  It also features a 'merge' mode to make a consensus transcriptome from multiple input,
+  which can be used with this wrapper.
+author:
+  - Michael Jahn
+input:
+  - gff: GFF or GTF files to be merged. 
+  - reference: GFF or GTF file acting as reference transcriptome (optional).
+output:
+  - gff: The merged transcriptome in GFF/GTF format.
+params:
+  - extra: additional program arguments.
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * For example, the '-g' option can be used to control the distance at which two adjoining features are merged (default: 50) 
