@@ -15,4 +15,4 @@ def find_wrappers_recursive(current_dir="."):
 
 
 with open("workflows.json", "w") as f:
-    json.dump({"workflow": find_wrappers_recursive()}, f)
+    json.dump({"workflows": find_wrappers_recursive()}, f)
