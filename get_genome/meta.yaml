@@ -1,0 +1,25 @@
+name: get_genome
+url: https://ccb.jhu.edu/software/stringtie/gffcompare.shtml
+description: >
+  This script attempts to download genome sequence (FASTA) and
+  genome annotation (GFF/GTF) files from NCBI using the
+  [NCBI datasets API](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/).
+  Alternatively, a FASTA and GFF file can be supplied by the user,
+  in which case input is inspected for correct format using [GFFexaminer](https://biopython.org/wiki/GFF_Parsing).
+  Finally, the genome sequence is indexed using [samtools](https://github.com/samtools/samtools).
+author:
+  - Michael Jahn, Rina Ahmed-Begrich
+input:
+  - database: Either 'ncbi' for NCBI retrieval via an assembly ID, or 'manual', with which parameters 'fasta' and 'gff' must link to respective input files.
+  - assembly: A Refseq ID or Genbank ID, for example [GCF_043231225.1](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_043231225.1/) (optional).
+  - fasta: Genome sequence as a (multi-entry) fasta file (optional). If used, a GFF file must be provided as well.
+  - gff: A GFF/GTF file with genome annotations. If used, a FASTA file must be provided as well.
+  - gff_source_types: A list of the allowed fields for GFF sources, in key-value format (see example).
+output:
+  - fasta: Retrieved genome sequence in FASTA format.
+  - gff: Retrieved genome annotation in GFF format.
+  - fai: Index of the genome sequence FASTA file.
+params:
+  - extra: additional program arguments.
+notes: |
+  * The `extra` param allows for additional program arguments.

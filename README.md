@@ -41,22 +41,14 @@ Wrappers that are to be added to this repository shoul already [follow the stand
 
 To add a wrapper, create a new directory named according to your tool, and add:
 
+- `<your_tool>/wrapper.py` -- the wrapper script, can be a `python` or `R` script
 - `<your_tool>/environment.yaml` -- the conda env definition
-- `<your_tool>/gffcompare/environment.linux-64.pin.txt` -- the pinned env, for exact reproduction
+- `<your_tool>/environment.linux-64.pin.txt` -- the pinned env, for exact reproduction
 - `<your_tool>/meta.yaml` -- desciption of the tool, its, purpose, authors, parameters, etc
 - `<your_tool>/test` -- A real-world test case, see the official snakemake wrappers documentation
 
-Tests are automatically run on wrappers when the name of the new tool is added to the github actions workflow.
-In the `linting` and `testing` subsections of `.github/workflows/main.yml`, add your tool to the list:
-
-```yml
-  Linting:
-    runs-on: ubuntu-latest
-    if: ${{ github.actor != 'github-actions[bot]' }}
-    strategy:
-      matrix:
-        workflow: [gffcompare, <your_tool>]  <-- ADD YOUR TOOL HERE
-```
+Tests are automatically run on wrappers if wrappers have a valid directory structure.
+This means they need to have a `wrapper.py` and a `test` sub-directory as main content.
 
 ## License
 

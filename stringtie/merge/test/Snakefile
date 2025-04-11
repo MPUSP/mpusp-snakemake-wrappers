@@ -1,0 +1,20 @@
+rule test_stringtie_merge:
+    input:
+        gff=[
+            "stringtie/merge/test/file1.gff",
+            "stringtie/merge/test/file2.gff",
+            "stringtie/merge/test/file3.gff",
+        ],
+        # optional input files
+        # reference="", # reference transcriptome in GFF/GTF format
+    output:
+        gff="merged.gff",
+    threads: 1
+    log:
+        "logs/stringtie_merge.log",
+    params:
+        # additional parameters
+        extra="",
+    wrapper:
+        # replace with "master/bio/stringtie/merge" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/stringtie/merge"

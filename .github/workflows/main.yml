@@ -7,9 +7,23 @@ on:
     branches: [main, dev]
 
 jobs:
+  GenerateMatrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate matrix variables
+        run: python collect_wrappers.py
+      - name: Show workflows.json Contents
+        run: cat workflows.json
+      - name: Parse workflows.json
+        id: parse-workflows
+        run: |
+          echo "matrix=$(cat workflows.json | jq -c '.workflows')" >> $GITHUB_OUTPUT
+    outputs:
+      matrix: ${{ steps.parse-workflows.outputs.matrix }}
+
   Formatting:
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'github-actions[bot]' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,12 +39,13 @@ jobs:
 
   Linting:
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'github-actions[bot]' }}
+    needs: GenerateMatrix
     strategy:
       matrix:
-        workflow: ["gffcompare", "stringtie/assemble"]
+        workflow: ${{ fromJson(needs.GenerateMatrix.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout wrapper
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Lint workflow
@@ -42,15 +57,16 @@ jobs:
 
   Testing:
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'github-actions[bot]' }}
-    strategy:
-      matrix:
-        workflow: ["gffcompare", "stringtie/assemble"]
     needs:
       - Linting
       - Formatting
+      - GenerateMatrix
+    strategy:
+      matrix:
+        workflow: ${{ fromJson(needs.GenerateMatrix.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout wrapper
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Test workflow
