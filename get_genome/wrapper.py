@@ -144,7 +144,7 @@ if db.lower() == "ncbi":
         "--filename {output_dir}/database.zip "
         "--include genome,gff3; "
         "cd {output_dir}; "
-        "unzip -fo database.zip; "
+        "unzip -o database.zip; "
         "rm database.zip) "
         "{log}"
     )
