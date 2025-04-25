@@ -1,0 +1,19 @@
+name: dwgsim
+url: https://github.com/nh13/DWGSIM
+description: Simulate reads for next generation sequencing applications.
+author:
+  - Michael Jahn
+input:
+  - fasta: Genome sequence as a (multi-entry) fasta file.
+output:
+  - fastq: Simulated reads in FASTQ format.
+params:
+  - read_length: Length of the simulated reads. Default is 70.
+  - read_number: Total number of reads per sample. Default is 1e5.
+  - mutations: Frequency of mutations. Default is 0.001.
+  - random_reads: Frequency of random reads. Default is 0.05.
+  - output_type: Output type, e.g. '1' for separate files per read. Default is 1.
+  - extra: Additional program arguments.
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * The `output` section is updated to reflect the output of the tool.
