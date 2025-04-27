@@ -20,13 +20,13 @@ rule test_dwgsim_separate:
 
 rule test_dwgsim_interleaved:
     input:
-        fasta="NC_001133.9.fna",
+        fasta="dwgsim/test/NC_001133.9.fna",
     output:
         # for 'output_type=2', a single (interleaved) fastq.gz file
         # is created which must end in '.bfast.fastq.gz'
         fastq1="simulated.bfast.fastq.gz",
     log:
-        "dwgsim.log",
+        "logs/dwgsim.log",
     params:
         output_type=2,
         read_length=50,
