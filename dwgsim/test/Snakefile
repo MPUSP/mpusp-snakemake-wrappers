@@ -1,0 +1,37 @@
+rule test_dwgsim_separate:
+    input:
+        fasta="dwgsim/test/NC_001133.9.fna",
+    output:
+        # for 'output_type=1' two fastq.gz files are
+        # created whose names need to end in 'bwa.read1/2.fastq.gz'
+        fastq1="simulated.bwa.read1.fastq.gz",
+        fastq2="simulated.bwa.read2.fastq.gz",
+    log:
+        "logs/dwgsim.log",
+    params:
+        output_type=1,
+        read_length=50,
+        read_number=100,
+        extra="",
+    wrapper:
+        # replace with "master/bio/dwgsim" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/dwgsim"
+
+
+rule test_dwgsim_interleaved:
+    input:
+        fasta="dwgsim/test/NC_001133.9.fna",
+    output:
+        # for 'output_type=2', a single (interleaved) fastq.gz file
+        # is created which must end in '.bfast.fastq.gz'
+        fastq1="simulated.bfast.fastq.gz",
+    log:
+        "logs/dwgsim.log",
+    params:
+        output_type=2,
+        read_length=50,
+        read_number=100,
+        extra="",
+    wrapper:
+        # replace with "master/bio/dwgsim" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/dwgsim"
