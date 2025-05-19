@@ -62,7 +62,8 @@ to_combine = " ".join(to_combine)
 shell(
     "(cat {to_combine} | "  # strand-specific gffs to combine
     "grep -v '#' | "  # ignore comments
-    "sort -k4,4 -n > "  # sort by start position, numerically
+    "sort -k4,4 -n | "  # sort by start position, numerically
+    "awk 'gsub(\"MSTRG.[0-9]+\", \"MSTRG.\" int((NR+1)/2))' > "  # re-number tx/exons
     "{output} && "  # output file
     "rm {to_combine}) "  # remove temp files
     "{log}"
