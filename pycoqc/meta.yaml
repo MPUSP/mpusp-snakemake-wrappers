@@ -1,0 +1,16 @@
+name: pycoqc
+url: https://a-slide.github.io/pycoQC/pycoQC/CLI_usage/
+description: >
+  PycoQC computes metrics and generates interactive QC plots for Oxford Nanopore technologies sequencing data.
+author:
+  - Michael Jahn
+input:
+  - summary: Nanopore summary text files obtained e.g. from a call to 'dorado summary'.
+  - bam: Alignment files matching the summary input (optional).
+output:
+  - report_html: QC report in HTML format
+  - report_json: QC report in JSON format
+params:
+  - extra: additional program arguments.
+notes: |
+  * The tool is currently archived on Github but fully functional for ONT output.
