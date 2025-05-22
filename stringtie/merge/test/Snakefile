@@ -13,6 +13,9 @@ rule test_stringtie_merge:
     log:
         "logs/stringtie_merge.log",
     params:
+        # Stringtie merge's default is to disregard strand information
+        # when merging features
+        by_strand=False,
         # additional parameters
         extra="",
     wrapper:

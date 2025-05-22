@@ -12,6 +12,10 @@ input:
 output:
   - gff: The merged transcriptome in GFF/GTF format.
 params:
+  - by_strand: >
+      Stringtie merge's default is to disregard strand information
+      when merging features. Change to 'True' in order to run merging operation
+      on each strand separately, then combine the result.
   - extra: additional program arguments.
 notes: |
   * The `extra` param allows for additional program arguments.
