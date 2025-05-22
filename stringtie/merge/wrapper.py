@@ -8,6 +8,7 @@ from os import path
 from snakemake.shell import shell
 
 # define default options for this wrapper
+by_strand = snakemake.params.get("by_strand", False)
 extra = snakemake.params.get("extra", "")
 log = snakemake.log_fmt_shell(stdout=True, stderr=True)
 output = snakemake.output.get("gff")
@@ -24,47 +25,63 @@ if ref_tx:
 if not isinstance(list_gff, list):
     list_gff = [list_gff]
 
-# strand definitions
-strands = {"plus": "+", "minus": "-", "empty": "."}
+# strand-specific run, then combine
+if by_strand:
 
-# separate files by strand and run StringTie merge
-to_combine = []
-for strand in strands:
-    to_merge = []
-    for raw_gff in list_gff:
-        temp_gff = path.splitext(raw_gff)[0]
-        shell(f"awk '$7 == \"{strands[strand]}\"' {raw_gff} > {temp_gff}_{strand}.gff")
-        with open(f"{temp_gff}_{strand}.gff", "r") as f:
-            lines = len(f.readlines())
-            if lines:
-                to_merge.append(f"{temp_gff}_{strand}.gff")
+    # strand definitions
+    strands = {"plus": "+", "minus": "-", "empty": "."}
+
+    # separate files by strand and run StringTie merge
+    to_combine = []
+    for strand in strands:
+        to_merge = []
+        for raw_gff in list_gff:
+            temp_gff = path.splitext(raw_gff)[0]
+            shell(
+                f"awk '$7 == \"{strands[strand]}\"' {raw_gff} > {temp_gff}_{strand}.gff"
+            )
+            with open(f"{temp_gff}_{strand}.gff", "r") as f:
+                lines = len(f.readlines())
+                if lines:
+                    to_merge.append(f"{temp_gff}_{strand}.gff")
+                else:
+                    shell(f"rm {temp_gff}_{strand}.gff")
+        if to_merge:
+            input = " ".join(to_merge)
+            if len(to_merge) > 1:
+                output_temp = path.commonprefix(to_merge)
             else:
-                shell(f"rm {temp_gff}_{strand}.gff")
-    if to_merge:
-        input = " ".join(to_merge)
-        if len(to_merge) > 1:
-            output_temp = path.commonprefix(to_merge)
-        else:
-            output_temp = path.splitext(to_merge[0])[0]
-        shell(
-            "(stringtie --merge "  # merge mode
-            "{extra} "  # additional options
-            "{ref_tx} "  # optional reference transcriptome
-            "-o {output_temp}_merged_{strand}.gff "  # output file
-            "{input} && "  # list of GFF files
-            "rm {input}) "  # remove temp files
-            "{log}"
-        )
-        to_combine.append(f"{output_temp}_merged_{strand}.gff")
+                output_temp = path.splitext(to_merge[0])[0]
+            shell(
+                "(stringtie --merge "  # merge mode
+                "{extra} "  # additional options
+                "{ref_tx} "  # optional reference transcriptome
+                "-o {output_temp}_merged_{strand}.gff "  # output file
+                "{input} && "  # list of GFF files
+                "rm {input}) "  # remove temp files
+                "{log}"
+            )
+            to_combine.append(f"{output_temp}_merged_{strand}.gff")
 
-# combine results from strand-specific runs
-to_combine = " ".join(to_combine)
-shell(
-    "(cat {to_combine} | "  # strand-specific gffs to combine
-    "grep -v '#' | "  # ignore comments
-    "sort -k4,4n -k3,3r  | "  # sort by feature type and then start position
-    "awk 'gsub(\"MSTRG.[0-9]+\", \"MSTRG.\" int((NR+1)/2))' > "  # re-number tx/exons
-    "{output} && "  # output file
-    "rm {to_combine}) "  # remove temp files
-    "{log}"
-)
+    # combine results from strand-specific runs
+    to_combine = " ".join(to_combine)
+    shell(
+        "(cat {to_combine} | "  # strand-specific gffs to combine
+        "grep -v '#' | "  # ignore comments
+        "sort -k4,4n -k3,3r  | "  # sort by feature type and then start position
+        'awk \'gsub("MSTRG.[0-9]+", "MSTRG." int((NR+1)/2))\' > '  # re-number tx/exons
+        "{output} && "  # output file
+        "rm {to_combine}) "  # remove temp files
+        "{log}"
+    )
+
+else:
+    # not strand-specific run
+    input = " ".join(list_gff)
+    shell(
+        "stringtie --merge "  # merge mode
+        "{extra} "  # additional options
+        "{ref_tx} "  # optional reference transcriptome
+        "-o {output} "  # output file
+        "{input} {log};"  # list of GFF files
+    )
