@@ -1,5 +1,6 @@
 rule test_nanoplot:
     input:
+        # summary files as obtained e.g. from Dorado base calling
         summary=[
             "nanoplot/test/FBC12581_83933ab2_794bc61c_0.summary",
             "nanoplot/test/FBC12581_83933ab2_794bc61c_1.summary",
@@ -7,12 +8,14 @@ rule test_nanoplot:
         # alternative inputs are possible and plenty, see https://github.com/wdecoster/NanoPlot
         # for a full list. This wrapper understands all of them, but not all were tested.
     output:
-        # output dir is flexible but file name should be kept as below
-        report="NanoPlot-report.html",
+        # the HTML report is the main output
+        # other conditional html/png/... figures might be created 
+        # depending on command line options
+        report="results/report.html",
     log:
         "logs/nanoplot.log",
     params:
-        extra="",
+        extra="--no_static",
     wrapper:
         # replace with "master/bio/nanoplot" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/nanoplot"

@@ -37,7 +37,7 @@ if len(input) != 1:
     raise ValueError(
         "Exactly one of the following inputs is allowed: "
         + ", ".join(input_args.keys())
-        + f"You have used {len(input)} inputs: "
+        + f"\nYou have used {len(input)} inputs: "
         + ", ".join(input.keys())
     )
 
@@ -47,13 +47,15 @@ for k, v in input.items():
 
 # prepare output
 report = snakemake.output.get("report")
-output_prefix = path.abspath(path.dirname(report))
+output_dir = path.abspath(path.dirname(report))
 
 # run nanoplot
 shell(
     "NanoPlot"
     " {input_formatted}"  # input can be summary, bam, fasta, fastq, ...
     " {extra}"  # additional options
-    " -o {output_prefix}"  # output dir
-    " {log}"
+    " --outdir {output_dir}"  # output dir
+    " --verbose"  # needed to redirect log to snakemake logfile
+    " {log};"
+    "mv {output_dir}/NanoPlot-report.html {report}"  # mv to desired output file name
 )
