@@ -43,7 +43,8 @@ if len(input) != 1:
 
 # format input string
 for k, v in input.items():
-    input_formatted = f"--{k} " + " ".join(v) if isinstance(v, list) else v
+    files = " ".join(v) if isinstance(v, list) else v
+    input_formatted = f"--{k} " + files
 
 # prepare output
 report = snakemake.output.get("report")
@@ -57,5 +58,5 @@ shell(
     " --outdir {output_dir}"  # output dir
     " --verbose"  # needed to redirect log to snakemake logfile
     " {log};"
-    "mv {output_dir}/NanoPlot-report.html {report}"  # mv to desired output file name
+    "mv {output_dir}/NanoPlot-report.html {report}"  # move to desired output file name
 )

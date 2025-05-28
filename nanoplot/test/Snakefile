@@ -8,10 +8,10 @@ rule test_nanoplot:
         # alternative inputs are possible and plenty, see https://github.com/wdecoster/NanoPlot
         # for a full list. This wrapper understands all of them, but not all were tested.
     output:
-        # the HTML report is the main output
+        # the HTML report is the main output;
         # other conditional html/png/... figures might be created 
-        # depending on command line options
-        report="results/report.html",
+        # in the same dir depending on command line options
+        report="report.html",
     log:
         "logs/nanoplot.log",
     params:
