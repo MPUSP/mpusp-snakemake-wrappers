@@ -8,6 +8,7 @@ from os import path
 from snakemake.shell import shell
 
 # define default options for this wrapper
+threads = snakemake.threads
 extra = snakemake.params.get("extra", "")
 log = snakemake.log_fmt_shell(stdout=True, stderr=True)
 
@@ -57,6 +58,7 @@ shell(
     " {extra}"  # additional options
     " --outdir {output_dir}"  # output dir
     " --verbose"  # needed to redirect log to snakemake logfile
+    " --threads {threads}" # number of threads used
     " {log};"
     "mv {output_dir}/NanoPlot-report.html {report}"  # move to desired output file name
 )

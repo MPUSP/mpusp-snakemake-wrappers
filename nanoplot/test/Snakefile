@@ -12,6 +12,7 @@ rule test_nanoplot:
         # other conditional html/png/... figures might be created 
         # in the same dir depending on command line options
         report="report.html",
+    threads: 1
     log:
         "logs/nanoplot.log",
     params:
