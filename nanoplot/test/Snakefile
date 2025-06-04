@@ -16,7 +16,7 @@ rule test_nanoplot:
     log:
         "logs/nanoplot.log",
     params:
-        extra="--no_static",
+        extra="--only-report",
     wrapper:
         # replace with "master/bio/nanoplot" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/nanoplot"
