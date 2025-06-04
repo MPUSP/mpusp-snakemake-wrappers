@@ -12,10 +12,11 @@ rule test_nanoplot:
         # other conditional html/png/... figures might be created 
         # in the same dir depending on command line options
         report="report.html",
+    threads: 1
     log:
         "logs/nanoplot.log",
     params:
-        extra="--no_static",
+        extra="--only-report",
     wrapper:
         # replace with "master/bio/nanoplot" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/nanoplot"

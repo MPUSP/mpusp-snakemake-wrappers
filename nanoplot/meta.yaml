@@ -28,4 +28,4 @@ params:
 notes: |
   * Exactly one type of input files should be provided, not several. The '.summary' output is recommended. 
   * The default behavior is to export each single plot also in png and hmtl format.
-  * Except for html, this can be suppressed by using the parameter '--no-static'.
+  * This can be suppressed by using the parameter '--only-report'.
