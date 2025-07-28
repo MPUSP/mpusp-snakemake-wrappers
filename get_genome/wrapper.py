@@ -35,11 +35,6 @@ gff = snakemake.input.get("gff", "")
 gff_source_types = snakemake.params.get("gff_source_types", default_sources)
 messages = []
 
-# check output file paths
-# output_fasta = snakemake.output.get("fasta")
-# output_gff = snakemake.output.get("gff")
-# output_fai = snakemake.output.get("fai")
-
 
 def check_fasta(fasta, messages=[]):
     with open(fasta, "r") as fasta_file:
@@ -178,5 +173,7 @@ elif db.lower() == "manual":
             fasta_out.write(fasta)
         with open(output_gff, "w") as gff_out:
             GFF.write(gff, gff_out)
+        # index FASTA file
+        shell("samtools faidx {output_fasta} {log}")
 else:
     raise ValueError("The parameter 'database' is none of 'ncbi', 'manual'")
