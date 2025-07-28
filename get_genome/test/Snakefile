@@ -1,8 +1,4 @@
-rule test_get_genome:
-    # input:
-    #     optional input files
-    #     gff="", # genome annotation in GFF/GTF format
-    #     fasta="", # genome sequence in FASTA format
+rule test_get_genome_from_ncbi:
     output:
         fasta="results/genome.fasta",
         gff="results/genome.gff",
@@ -10,6 +6,30 @@ rule test_get_genome:
     params:
         database="ncbi",
         assembly="GCF_043231225.1",
+        gff_source_types=[
+            {"RefSeq": "gene"},
+            {"RefSeq": "pseudogene"},
+            {"RefSeq": "CDS"},
+            {"Protein Homology": "CDS"},
+        ],
+    threads: 1
+    log:
+        "results/get_genome.log",
+    wrapper:
+        # replace with "master/bio/get_genome" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/get_genome"
+
+
+rule test_get_genome_from_file:
+    input:
+        gff="get_genome/test/GCF_043231225.1.gff",  # genome annotation in GFF/GTF format
+        fasta="get_genome/test/GCF_043231225.1.fasta",  # genome sequence in FASTA format
+    output:
+        fasta="results/genome.fasta",
+        gff="results/genome.gff",
+        fai="results/genome.fasta.fai",
+    params:
+        database="manual",
         gff_source_types=[
             {"RefSeq": "gene"},
             {"RefSeq": "pseudogene"},
