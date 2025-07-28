@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.0.0...v1.1.0) (2025-07-28)
+
+
+### Features
+
+* added new test to get genome locally ([85307c9](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/85307c9e418653faff251e94e5ed6d84c1af7928))
+* added test ([4cc8fb3](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/4cc8fb3fe779573af9df6ae59491c082edb8869a))
+
+
+### Bug Fixes
+
+* added missing fasta indexing ([4cc8fb3](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/4cc8fb3fe779573af9df6ae59491c082edb8869a))
+* added missing fasta indexing ([f62b3e8](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/f62b3e8bef10619a02ec6d91396923b26057556f))
+
 ## 1.0.0 (2025-06-04)
 
 
