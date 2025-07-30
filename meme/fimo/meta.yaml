@@ -1,0 +1,17 @@
+name: meme fimo
+url: https://meme-suite.org/meme/doc/fimo.html
+description: >
+  FIMO is part of the MEME suite (see link) and scans a set of sequences for individual matches to the provided motif.
+  The name FIMO stands for 'Find Individual Motif Occurrences'.
+author:
+  - Michael Jahn
+input:
+  - meme: Motif in meme format. Can be created with wrapper meme/matrix2meme.
+  - fasta: Fasta file with sequences to search for motifs.
+output: |
+  - Multiple files describing search results (".gff", ".html", ".tsv", ".xml").
+    Note: output dir is variable but output files need prefix 'fimo'.
+params:
+  - extra: additional program arguments.
+notes: |
+  * This wrapper is part of a series of three consecutive modules for MEME/FIMO motif search.
