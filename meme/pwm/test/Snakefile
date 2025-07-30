@@ -1,4 +1,4 @@
-rule test_pwm:
+rule test_meme_pwm:
     input:
         fasta="meme/pwm/test/promoters.fasta",
     output:
