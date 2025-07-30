@@ -1,0 +1,17 @@
+name: meme pwm
+url: https://meme-suite.org/meme/doc/fimo.html
+description: >
+  This utility function creates a Position Weight Matrix (PWM) from a Fasta file as input for FIMO.
+  FIMO is part of the MEME suite (see link) and scans a set of sequences for individual matches to the provided motif.
+  The name FIMO stands for 'Find Individual Motif Occurrences'. 
+author:
+  - Michael Jahn
+input:
+  - fasta: Fasta file with input sequences (at least 10). Input must be same-length sequences.
+output:
+  - counts: Text file containing counts table.
+  - pwm: Text file containing position weight matrix.
+params:
+  - extra: additional program arguments.
+notes: |
+  * This wrapper is part of a series of three consecutive modules for MEME/FIMO motif search.

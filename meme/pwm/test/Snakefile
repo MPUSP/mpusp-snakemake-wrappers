@@ -1,0 +1,14 @@
+rule test_pwm:
+    input:
+        fasta="meme/pwm/test/promoters.fasta",
+    output:
+        pwm="pwm.txt",
+        counts="counts.txt",
+    params:
+        subseq=None,
+        extra="",
+    log:
+        "result/pwm.log",
+    wrapper:
+        # replace with "master/bio/meme/pwm" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/meme/pwm"
