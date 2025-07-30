@@ -1,0 +1,14 @@
+rule test_meme_fimo:
+    input:
+        meme="meme/fimo/test/motif.meme",
+        fasta="meme/fimo/test/GCF_043231225.1.fasta",
+    output:
+        # Note: output dir is variable but output files need prefix 'fimo'
+        multiext("results/fimo", ".gff", ".html", ".tsv", ".xml"),
+    params:
+        extra="--no-pgc",
+    log:
+        "logs/fimo.log",
+    wrapper:
+        # replace with "master/bio/meme/fimo" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/meme/fimo"

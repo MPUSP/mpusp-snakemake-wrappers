@@ -1,0 +1,12 @@
+rule test_meme_matrix2meme:
+    input:
+        counts="meme/matrix2meme/test/counts.txt",
+    output:
+        meme="motif.meme",
+    params:
+        extra="",
+    log:
+        "logs/matrix2meme.log",
+    wrapper:
+        # replace with "master/bio/meme/matrix2meme" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/meme/matrix2meme"

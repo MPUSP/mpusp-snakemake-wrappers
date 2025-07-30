@@ -1,0 +1,16 @@
+name: meme matrix2meme
+url: https://meme-suite.org/meme/doc/fimo.html
+description: >
+  This utility function creates a 'meme'-formatted motif file as input for FIMO.
+  FIMO is part of the MEME suite (see link) and scans a set of sequences for individual matches to the provided motif.
+  The name FIMO stands for 'Find Individual Motif Occurrences'.
+author:
+  - Michael Jahn
+input:
+  - counts: Text file containing PWM counts table. Can be created with wrapper meme/pwm.
+output:
+  - meme: Motif in meme format. This is the input for the wrapper meme/fimo.
+params:
+  - extra: additional program arguments.
+notes: |
+  * This wrapper is part of a series of three consecutive modules for MEME/FIMO motif search.
