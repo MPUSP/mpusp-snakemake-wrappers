@@ -1,0 +1,23 @@
+name: logomaker
+url: https://logomaker.readthedocs.io/en/latest/index.html
+description: |
+  Logomaker is a Python package for generating publication-quality sequence logos.
+  Logomaker can generate both standard and highly customized logos illustrating the properties of DNA, RNA, or protein sequences.
+  For more information about Logomaker, please see Tareen A, Kinney JB (2019) Logomaker: beautiful sequence logos in Python. Bioinformatics btz921. bioRxiv doi:10.1101/635029.
+author:
+  - Michael Jahn
+input:
+  - fasta: List of same-length sequences in fasta format.
+  - seqlist: List of same-length sequences as a text file, one sequence per line.
+  - pwm: A position weight matrix in CSV format, with columns 'pos', 'A', 'C', 'G', 'T'.
+output:
+  - List of file name and file endings, default 'svg', 'pdf', 'png'.
+params:
+  - pwm_type: One of 'counts', 'probability', 'weight', or 'information'.
+  - background: 4-element array giving the proportion of 'A', 'C', 'G', 'T' used as background.
+  - ignore: Characters to ignore in the input sequences.
+  - figsize: 2-element array giving the figure size.
+  - extra: Additional program arguments as 'key=value' pairs.
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * See https://logomaker.readthedocs.io/en/latest/implementation.html#logo-class for a full list of options.

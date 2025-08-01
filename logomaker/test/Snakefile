@@ -1,0 +1,40 @@
+rule test_logomaker_fasta:
+    input:
+        fasta="logomaker/test/promoters.fasta",
+    output:
+        multiext("logoplot", ".svg", ".pdf", ".png"),
+    log:
+        "logs/logomaker.log",
+    params:
+        pwm_type="weight",
+        background=[0.305, 0.195, 0.195, 0.305],
+        ignore="",
+        figsize=[10, 2.5],
+        extra="fade_below=0.33 flip_below=False",
+    wrapper:
+        # replace with "master/bio/dwgsim" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/logomaker"
+
+
+rule test_logomaker_seqlist:
+    input:
+        seqlist="logomaker/test/promoters.txt",
+    output:
+        multiext("logoplot", ".svg", ".pdf", ".png"),
+    log:
+        "logs/logomaker.log",
+    wrapper:
+        # replace with "master/bio/dwgsim" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/logomaker"
+
+
+rule test_logomaker_pwm:
+    input:
+        pwm="logomaker/test/promoters.csv",
+    output:
+        multiext("logoplot", ".svg", ".pdf", ".png"),
+    log:
+        "logs/logomaker.log",
+    wrapper:
+        # replace with "master/bio/dwgsim" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/logomaker"
