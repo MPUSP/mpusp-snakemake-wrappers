@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.2.0](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.1.0...v1.2.0) (2025-08-01)
+
+
+### Features
+
+* added fimo search as third module for MEME suite ([4ebb227](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/4ebb227e9af13f38f3d72bbbef23b1e49094e293))
+* added logomaker wrapper ([565bb5f](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/565bb5f28399678838642010ad81004b45fa142d))
+* added logoplot wrapper ([3d53752](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/3d5375231c99261b4f233cbd5b74c06846dcd4b3))
+* added meme module to generate pwm ([edaa975](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/edaa9752fdddb81dbd3e51ce36b2e62119778bb8))
+* added meme module to generate pwm, make motif, and search for motif in target sequence ([e248df9](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/e248df9670ec3d669b25b5b7f270e543b7972121))
+* added second MEME suite module to create meme motif ([b5a4d5c](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/b5a4d5cef83c4a6957d750edf07af472803925af))
+
+
+### Bug Fixes
+
+* added missing pin, formatting ([4cf3595](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/4cf359508db44a827b4bacc8c6f5404bbb6658ea))
+* missing dependency ([bf80934](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/bf80934f7c38c3515d5525f6cf65436a5b1feb20))
+
 ## [1.1.0](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.0.0...v1.1.0) (2025-07-28)
 
 
