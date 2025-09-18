@@ -5,6 +5,7 @@ __license__ = "MIT"
 
 
 from os import path
+from re import match
 from BCBio.GFF import GFFExaminer
 from BCBio import GFF
 from subprocess import getoutput
@@ -129,7 +130,7 @@ if db.lower() == "ncbi":
     for k in ncbi_genome.keys():
         messages += ["{0}: {1}".format(k, ncbi_genome.get(k))]
     refseq_id = ncbi_genome.get("Assembly Accession")
-    if not refseq_id.startswith("GCF_"):
+    if not (match("^GC[AF]\\_[0-9]{9,}\\.[0-9]+$", refseq_id)):
         raise ValueError(f"The RefSeq ID '{refseq_id}' has no valid format")
 
     # Step 2: Retrieve dataset from NCBI
