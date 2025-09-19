@@ -72,6 +72,8 @@ def check_gff(input_gff, messages=[]):
         limits = dict(gff_source_type=gff_source_type)
         for rec in GFF.parse(gff_file, limit_info=limits):
             for recfeat in rec.features:
+                if recfeat.type == "inferred_parent":
+                    continue
                 rec_keys = recfeat.qualifiers.keys()
                 if not "Name" in rec_keys:
                     if "locus_tag" in rec_keys:
