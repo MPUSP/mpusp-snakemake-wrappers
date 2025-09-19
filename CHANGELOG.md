@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.0...v1.2.1) (2025-09-19)
+
+
+### Bug Fixes
+
+* accept genbank or refseq files, proper matching ([8c382e0](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/8c382e0683c38b08953334965e877f3f78514b6d))
+* minor issues ([ad78aab](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/ad78aaba55c168f60f8c4f6724935590156eb4b6))
+* prevent making inferred parent feats ([20b2ce5](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/20b2ce5e0d9e36735ca73b6502ad0f6dbb7c7104))
+
 ## [1.2.0](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.1.0...v1.2.0) (2025-08-01)
 
 
