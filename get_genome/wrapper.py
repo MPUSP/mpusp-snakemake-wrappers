@@ -37,12 +37,12 @@ gff_source_types = snakemake.params.get("gff_source_types", default_sources)
 messages = []
 
 
-def check_fasta(fasta, messages=[]):
-    with open(fasta, "r") as fasta_file:
+def check_fasta(input_fasta, messages=[]):
+    with open(input_fasta, "r") as fasta_file:
         fasta = fasta_file.read()
     n_items = fasta.count(">")
     if n_items:
-        messages += [f"Supplied fasta file '{fasta}' was found"]
+        messages += [f"Supplied fasta file '{input_fasta}' was found"]
         messages += [f"Supplied fasta file contains {n_items} items"]
     else:
         raise ValueError(
@@ -71,21 +71,36 @@ def check_gff(input_gff, messages=[]):
             gff_source_type += list(i.items())
         limits = dict(gff_source_type=gff_source_type)
         for rec in GFF.parse(gff_file, limit_info=limits):
+            unique_names = set()
             for recfeat in rec.features:
                 if recfeat.type == "inferred_parent":
                     continue
                 rec_keys = recfeat.qualifiers.keys()
                 if not "Name" in rec_keys:
                     if "locus_tag" in rec_keys:
+                        messages += [
+                            f"Added missing 'Name' from locus_tag: {recfeat.qualifiers["locus_tag"][0]}"
+                        ]
                         recfeat.qualifiers["Name"] = recfeat.qualifiers["locus_tag"]
                     else:
                         raise ValueError(
                             "required fields 'Name','locus_tag' missing in *.gff file"
                         )
                 else:
-                    if "locus_tag" in rec_keys:
-                        recfeat.qualifiers["trivial_name"] = recfeat.qualifiers["Name"]
-                        recfeat.qualifiers["Name"] = recfeat.qualifiers["locus_tag"]
+                    if recfeat.qualifiers["Name"][0] in unique_names:
+                        if "locus_tag" in rec_keys:
+                            messages += [
+                                f"Added locus_tag suffix to the duplicated 'Name': {recfeat.qualifiers["Name"][0]}"
+                            ]
+                            recfeat.qualifiers["Name"] = (
+                                f"{recfeat.qualifiers["Name"][0]}_{recfeat.qualifiers["locus_tag"][0]}"
+                            )
+                        else:
+                            raise ValueError(
+                                f"found duplicated 'Name' tag in *.gff: {recfeat.qualifiers["Name"][0]}"
+                            )
+                    else:
+                        unique_names.add(recfeat.qualifiers["Name"][0])
                 if not "ID" in rec_keys:
                     if "locus_tag" in rec_keys:
                         recfeat.qualifiers["ID"] = recfeat.qualifiers["locus_tag"]
@@ -161,6 +176,8 @@ if db.lower() == "ncbi":
     gff, messages = check_gff(output_gff, messages)
     with open(output_gff, "w") as gff_out:
         GFF.write(gff, gff_out)
+    with open(str(snakemake.log), "a") as log_out:
+        log_out.write("\n".join(messages) + "\n")
 
 elif db.lower() == "manual":
     if not path.exists(fasta):
@@ -176,6 +193,8 @@ elif db.lower() == "manual":
             fasta_out.write(fasta)
         with open(output_gff, "w") as gff_out:
             GFF.write(gff, gff_out)
+        with open(str(snakemake.log), "a") as log_out:
+            log_out.write("\n".join(messages) + "\n")
         # index FASTA file
         shell("samtools faidx {output_fasta} {log}")
 else:
