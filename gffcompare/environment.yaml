@@ -3,4 +3,4 @@ channels:
   - bioconda
   - nodefaults
 dependencies:
-  - gffcompare =0.12.6
+  - gffcompare =0.12.10
