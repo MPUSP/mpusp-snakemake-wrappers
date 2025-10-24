@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.2](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.1...v1.2.2) (2025-10-24)
+
+
+### Bug Fixes
+
+* bump version ([d6dccd4](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/d6dccd424f1603b3c1920086af4bfd0ae4f16604))
+* bump version ([fe1ab61](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/fe1ab613d89a972ac4ede5c851c5848030db5aeb))
+* get_genome Name tag issue ([bbf5671](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/bbf5671d25fe447e4d169b3eb362d2d875b1a626))
+* only test on PRs to main ([0ecccf1](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/0ecccf1956d15db2c85644cb2106b964326ecc65))
+* smarter handling of missing or duplicated Name tags, closes [#20](https://github.com/MPUSP/mpusp-snakemake-wrappers/issues/20) ([5b4407c](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/5b4407c1aff8117b71e05a020c58dfecc7c9b091))
+
 ## [1.2.1](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.0...v1.2.1) (2025-09-19)
 
 
