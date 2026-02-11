@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.2...v1.2.3) (2026-02-11)
+
+
+### Bug Fixes
+
+* bump super-linter version ([3471752](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/3471752be7be25a820c29ad8fbf181241af6203f))
+* bump super-linter version ([f6e5258](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/f6e52588ed825894ede1c8321a9bd68b8bf1b121))
+
 ## [1.2.2](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.1...v1.2.2) (2025-10-24)
 
 
