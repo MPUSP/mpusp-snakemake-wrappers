@@ -18,22 +18,26 @@ fasta = snakemake.input.get("fasta")
 if not fasta:
     raise ValueError("Input 'fasta' is required for rgi main.")
 
-# define output prefix; RGI always creates <prefix>.txt and <prefix>.json
-report_txt = snakemake.output.get("report_txt")
-if not report_txt:
-    raise ValueError("Output 'report_txt' is required for this wrapper.")
-
-if input_type not in {"contig", "protein"}:
-    raise ValueError("Parameter 'input_type' must be either 'contig' or 'protein'.")
-
 if isinstance(fasta, list):
     if len(fasta) != 1:
         raise ValueError("Exactly one fasta input file is supported by rgi main.")
     fasta = fasta[0]
 
-output_prefix = os.path.splitext(report_txt)[0]
+# define output prefix; RGI always creates <prefix>.txt and <prefix>.json
+report = snakemake.output
+if not len(report) == 2:
+    raise ValueError(
+        "Output needs to contain exactly two files: <prefix>.txt and <prefix>.json."
+    )
+if not sorted([os.path.splitext(i)[1] for i in report]) == [".json", ".txt"]:
+    raise ValueError("Output files must have extensions '.txt' and '.json'.")
+output_prefix = os.path.splitext(report[0])[0]
 if os.path.dirname(output_prefix):
     os.makedirs(os.path.dirname(output_prefix), exist_ok=True)
+
+# other params
+if input_type not in {"contig", "protein"}:
+    raise ValueError("Parameter 'input_type' must be either 'contig' or 'protein'.")
 
 # run rgi main
 shell(

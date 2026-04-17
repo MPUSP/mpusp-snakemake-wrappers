@@ -2,7 +2,8 @@ rule test_rgi:
     input:
         fasta="rgi/test/GCF_043231225.1.fasta",
     output:
-        report_txt="rgi_report.txt",
+        # the `multiext` statement is used as all output files are created using a common prefix
+        multiext("report", ".txt", ".json"),
     log:
         "logs/rgi.log",
     params:
