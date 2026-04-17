@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.3...v1.3.0) (2026-04-17)
+
+
+### Features
+
+* added RGI for AMR prediction ([1452ba2](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/1452ba22ffa7ec874a8f52b4bc48ad41a9683c7e))
+* added RGI for AMR prediction ([4006d91](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/4006d910ffc99687f1621b7633e5ccd1c0a3b69c))
+
+
+### Bug Fixes
+
+* review comments ([ad37255](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/ad3725506dfb6059bb084642c681675bdf764649))
+
 ## [1.2.3](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.2...v1.2.3) (2026-02-11)
 
 
