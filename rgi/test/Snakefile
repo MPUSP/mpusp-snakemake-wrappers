@@ -1,0 +1,13 @@
+rule test_rgi:
+    input:
+        fasta="rgi/test/GCF_043231225.1.fasta",
+    output:
+        report_txt="rgi_report.txt",
+    log:
+        "logs/rgi.log",
+    params:
+        input_type="contig",
+        extra="--clean --alignment_tool DIAMOND",
+    wrapper:
+        # replace with "master/bio/rgi" for submission to official snakemake-wrappers repo
+        "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/rgi"
