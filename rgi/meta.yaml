@@ -1,0 +1,21 @@
+name: rgi
+url: https://github.com/arpcard/rgi
+description: >
+  Resistance Gene Identifier (RGI) for predicting resistomes from
+  contig or protein FASTA input using CARD reference models.
+author:
+  - Michael Jahn
+input:
+  - fasta: One FASTA file (contigs or proteins) for RGI main analysis.
+output:
+  - report_txt: Main RGI tab-delimited report (`*.txt`). Mandatory.
+  - report_json: >
+      JSON side output (`*.json`) is generated automatically by RGI
+      using the same output prefix. Optional.
+params:
+  - input_type: Input type for `rgi main`, either `contig` (default) or `protein`.
+  - extra: Additional program arguments.
+notes: |
+  * Exactly one FASTA input file is supported by this wrapper.
+  * The output prefix is derived from `output.report_txt`.
+  * The default CARD database is available with the RGI installation, but custom databases can be added manually using `rgi load ...`.
