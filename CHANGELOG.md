@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.3.0...v1.3.1) (2026-04-17)
+
+
+### Bug Fixes
+
+* pycoQC python &gt;=3.8 compatibility error ([dbdfb5a](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/dbdfb5a2b6c2f415086ddbb9f1b5103c6c826e0a))
+* pycoQC python &gt;=3.8 compatibility error ([2ae2423](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/2ae24230a40a64fa318683c1874c7dc45c1f47f0))
+
 ## [1.3.0](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.2.3...v1.3.0) (2026-04-17)
 
 
