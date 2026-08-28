@@ -5,10 +5,10 @@ rule test_meme_fimo:
     output:
         # Note: output dir is variable but output files need prefix 'fimo'
         multiext("results/fimo", ".gff", ".html", ".tsv", ".xml"),
-    params:
-        extra="--no-pgc",
     log:
         "logs/fimo.log",
+    params:
+        extra="--no-pgc",
     wrapper:
         # replace with "master/bio/meme/fimo" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/meme/fimo"

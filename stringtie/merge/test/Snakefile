@@ -9,9 +9,9 @@ rule test_stringtie_merge:
         # reference="", # reference transcriptome in GFF/GTF format
     output:
         gff="merged.gff",
-    threads: 1
     log:
         "logs/stringtie_merge.log",
+    threads: 1
     params:
         # Stringtie merge's default is to disregard strand information
         # when merging features

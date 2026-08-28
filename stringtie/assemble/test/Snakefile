@@ -10,9 +10,9 @@ rule test_stringtie_assemble:
         # reference="", # reference transcriptome in GFF/GTF format
     output:
         gff="assembly.gff",
-    threads: 1
     log:
         "logs/stringtie_assemble.log",
+    threads: 1
     params:
         # additional parameters
         extra="",

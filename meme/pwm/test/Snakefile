@@ -4,11 +4,11 @@ rule test_meme_pwm:
     output:
         pwm="pwm.txt",
         counts="counts.txt",
+    log:
+        "result/pwm.log",
     params:
         subseq=None,
         extra="",
-    log:
-        "result/pwm.log",
     wrapper:
         # replace with "master/bio/meme/pwm" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/meme/pwm"

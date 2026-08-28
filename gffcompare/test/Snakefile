@@ -12,9 +12,9 @@ rule test_gffcompare:
         # it is recommended to use the `multiext` statement, as all output files are
         # created using a common prefix
         multiext("gffcmp", ".combined.gtf", ".loci", ".stats", ".tracking"),
-    threads: 1
     log:
         "logs/gffcompare.log",
+    threads: 1
     params:
         # To combine features from all GFF input files without redundancy, use `-C`
         extra="-C",
