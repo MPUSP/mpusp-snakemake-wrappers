@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.2](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.3.1...v1.3.2) (2026-08-28)
+
+
+### Bug Fixes
+
+* snakefmt ([cd58e83](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/cd58e835856c2756c4e84f7eebb5496c2f515595))
+* update nanoplot version, args, test data ([e1cf0d0](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/e1cf0d0a5d17bcc0770a2cac023d448f675946ab))
+* updated test files for pycoQC ([8a6e24a](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/8a6e24ae9a1d87ac33df9d45ea123a39c76f3a4c))
+* updates to nanopore qc tools ([17d7faf](https://github.com/MPUSP/mpusp-snakemake-wrappers/commit/17d7fafc29cafbb452cab5a169c9fe6e1a2ef6c8))
+
 ## [1.3.1](https://github.com/MPUSP/mpusp-snakemake-wrappers/compare/v1.3.0...v1.3.1) (2026-04-17)
 
 
