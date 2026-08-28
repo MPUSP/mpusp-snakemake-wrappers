@@ -3,6 +3,9 @@ rule test_get_genome_from_ncbi:
         fasta="results/genome.fasta",
         gff="results/genome.gff",
         fai="results/genome.fasta.fai",
+    log:
+        "results/get_genome.log",
+    threads: 1
     params:
         database="ncbi",
         assembly="GCF_043231225.1",
@@ -12,9 +15,6 @@ rule test_get_genome_from_ncbi:
             {"RefSeq": "CDS"},
             {"Protein Homology": "CDS"},
         ],
-    threads: 1
-    log:
-        "results/get_genome.log",
     wrapper:
         # replace with "master/bio/get_genome" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/get_genome"
@@ -28,6 +28,9 @@ rule test_get_genome_from_file:
         fasta="results/genome.fasta",
         gff="results/genome.gff",
         fai="results/genome.fasta.fai",
+    log:
+        "results/get_genome.log",
+    threads: 1
     params:
         database="manual",
         gff_source_types=[
@@ -36,9 +39,6 @@ rule test_get_genome_from_file:
             {"RefSeq": "CDS"},
             {"Protein Homology": "CDS"},
         ],
-    threads: 1
-    log:
-        "results/get_genome.log",
     wrapper:
         # replace with "master/bio/get_genome" for submission to official snakemake-wrappers repo
         "https://raw.githubusercontent.com/MPUSP/mpusp-snakemake-wrappers/refs/heads/main/get_genome"

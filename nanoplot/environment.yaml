@@ -3,4 +3,4 @@ channels:
   - bioconda
   - nodefaults
 dependencies:
-  - nanoplot =1.44.1
+  - nanoplot =1.47.2
